@@ -68,7 +68,7 @@ def login():
     cursor = conn.cursor(dictionary=True)
 
     # Fetch user
-    cursor.execute("SELECT * FROM users WHERE email = %s", (data['email'],))
+    cursor.execute("SELECT * FROM users WHERE email = %s", (data['email']))
     user = cursor.fetchone()
     cursor.close()
     conn.close()
