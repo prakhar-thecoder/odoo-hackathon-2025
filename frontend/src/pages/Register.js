@@ -6,11 +6,6 @@ export default function Register() {
     name: '',
     email: '',
     password: '',
-    skillsOffered: '',
-    skillsWanted: '',
-    location: '',
-    availability: '',
-    isProfilePublic: false
   });
 
   const handleChange = (e) => {

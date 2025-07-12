@@ -2,10 +2,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 
 // Import pages
-import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
+import Landing from './pages/Landing';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={
             <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-              <Home />
+              <Landing />
             </main>
           } />
           <Route path="/login" element={
