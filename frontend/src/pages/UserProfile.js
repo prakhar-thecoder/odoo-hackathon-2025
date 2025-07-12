@@ -13,12 +13,7 @@ const getUserById = (id) => {
       skillsOffered: ['Web Development', 'Graphic Design'],
       skillsWanted: ['Photography', 'Cooking'],
       rating: 4.5,
-      reviewCount: 24,
-      bio: 'Full-stack developer with 5+ years of experience. Love to cook and learn new skills!',
-      location: 'San Francisco, CA',
-      memberSince: '2022'
     },
-    // Add more mock users as needed
   ];
   
   return mockUsers.find(user => user.id === parseInt(id)) || mockUsers[0];
@@ -57,12 +52,6 @@ export default function UserProfile() {
             <div className="flex-1 pr-0 md:pr-8">
               {/* Name */}
               <h1 className="text-2xl font-bold text-gray-900 mb-4">{user.name}</h1>
-              
-              {/* Bio */}
-              {user.bio && (
-                <p className="text-gray-600 mb-6">{user.bio}</p>
-              )}
-              
               {/* Skills Offered */}
               <div className="mb-6">
                 <h2 className="text-lg font-semibold text-gray-800 mb-2">Skills I Offer</h2>
@@ -94,24 +83,12 @@ export default function UserProfile() {
               </div>
               
               {/* Rating */}
-              <div className="mt-8 pt-6 border-t border-gray-200">
+              <div className="mt-8 pt-6">
                 <div className="flex items-center">
+                  <span className="text-lg font-semibold text-gray-800 mr-2">Rating: </span>
                   <span className="text-2xl font-bold text-gray-900 mr-2">{user.rating.toFixed(1)}</span>
                   <span className="text-gray-500">/5.0</span>
-                  <span className="text-gray-500 ml-2">({user.reviewCount} reviews)</span>
                 </div>
-              </div>
-              
-              {/* Additional Info */}
-              <div className="mt-6 text-sm text-gray-500 space-y-1">
-                {user.location && (
-                  <div className="flex items-center">
-                    <span>📍 {user.location}</span>
-                  </div>
-                )}
-                {user.memberSince && (
-                  <div>👤 Member since {user.memberSince}</div>
-                )}
               </div>
             </div>
             

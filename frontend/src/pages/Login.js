@@ -27,6 +27,7 @@ export default function Login() {
         setError(data.error);
         return;
       } else {
+        localStorage.setItem('token', data.token);
         navigate("/home");
       }
     } catch (err) {

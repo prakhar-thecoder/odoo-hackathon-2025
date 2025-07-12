@@ -1,19 +1,30 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaSave, FaTimes } from 'react-icons/fa';
 import Switch from '../components/Switch';
+import { get, put } from '../utils/requests';
 
 export default function Profile() {
-  // In a real app, this would come from your auth context or API
-  // Form data for the profile form
   const [formData, setFormData] = useState({
-    email: 'user@example.com', // This would come from your auth context
-    name: 'John Doe',
-    skillsOffered: 'Web Development, Graphic Design',
-    skillsWanted: 'Photography, Cooking',
-    location: 'New York, USA',
-    availability: 'weekends',
-    isProfilePublic: true
+    email: '', // This would come from your auth context
+    name: '',
+    skillsOffered: '',
+    skillsWanted: '',
+    location: '',
+    availability: '',
+    is_public: true
   });
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const response = await get('/users/me');
+        setFormData(response);
+      } catch (error) {
+        console.error('Error fetching profile:', error);
+      }
+    };
+    fetchProfile();
+  }, []);
   
   // Profile picture state
   const [profilePicture, setProfilePicture] = useState('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80');
@@ -33,14 +44,13 @@ export default function Profile() {
   const handleToggle = (value) => {
     setFormData(prev => ({
       ...prev,
-      isProfilePublic: value
+      is_public: value
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle profile update logic here
-    console.log('Profile updated:', formData);
+    put('/users/me', formData);
   };
 
   const handleDiscard = (e) => {
@@ -110,6 +120,22 @@ export default function Profile() {
               <div className="mt-1 block w-full rounded-md bg-gray-100 px-3 py-2 text-gray-600 sm:text-sm">
                 {formData.email}
               </div>
+            </div>
+
+            {/* Name*/}
+            <div>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                Name
+              </label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 sm:text-sm p-2 border"
+                placeholder="Name"
+                value={formData.name}
+                onChange={handleChange}
+              />
             </div>
 
             {/* Skills Offered */}
@@ -186,7 +212,7 @@ export default function Profile() {
             {/* Profile Privacy */}
             <div className="pt-2">
               <Switch 
-                enabled={formData.isProfilePublic}
+                enabled={formData.is_public}
                 onChange={handleToggle}
                 label="Public profile"
               />
