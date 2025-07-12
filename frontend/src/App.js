@@ -2,11 +2,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 
 // Import pages
+import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
 import Landing from './pages/Landing';
-import Home from './pages/Home';
+import UserProfile from './pages/UserProfile';
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
           } />
           <Route path="/profile" element={
             <Profile />
+          } />
+          <Route path="/users/:id" element={
+            <UserProfile />
           } />
         </Routes>
       </div>
