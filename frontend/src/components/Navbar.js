@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { FaHome } from 'react-icons/fa';
+import { FaHome, FaUser } from 'react-icons/fa';
 
 const Navbar = () => {
   return (
@@ -24,6 +24,13 @@ const Navbar = () => {
             >
               <FaHome className="h-4 w-4 mr-1.5" />
               Home
+            </Link>
+            <Link
+              to="/profile"
+              className="flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:text-purple-600 transition-colors duration-200"
+            >
+              <FaUser className="h-4 w-4 mr-1.5" />
+              My Profile
             </Link>
           </div>
         </div>

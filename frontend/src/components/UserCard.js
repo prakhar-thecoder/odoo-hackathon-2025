@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const UserCard = ({ user }) => {
   // Simple rating display
   const renderRating = (rating) => {
@@ -64,12 +66,11 @@ const UserCard = ({ user }) => {
           {/* Rating and Request Button */}
           <div className="flex items-center justify-between flex-col gap-12">           
               {/* Request Button */}
-              <button
-                type="button"
+              <Link to={`/users/${user.id}`}
                 className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
               >
                 Request
-              </button>
+              </Link>
               {/* Rating */}
               <div className="text-sm">
                 Rating: {renderRating(user.rating)}
