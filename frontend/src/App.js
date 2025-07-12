@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
 import Landing from './pages/Landing';
+import Home from './pages/Home';
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
             <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
               <Landing />
             </main>
+          } />
+          <Route path="/home" element={
+            <Home />
           } />
           <Route path="/login" element={
             <Login />
