@@ -16,6 +16,7 @@ def register():
     # Connect to DB
     conn = get_db_connection()
     cursor = conn.cursor()
+    cursor.execute("USE skill_swap")
 
     # Check if user already exists
     cursor.execute("SELECT * FROM users WHERE email = %s", (data['email'],))
